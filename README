@@ -1,0 +1,50 @@
+README
+---------
+
+This is the final project from CS40: Graphics. I completed it with a partner (GitHub user: _______).
+
+Overview of Our Program:
+
+  The idea behind our program is to create a virtual potter's wheel. The user plots four or more points.  After 
+  pressing a button, these points are connected by a spline curve, a computational technique that guarantees a 
+  smooth, curved line segment that connects the points. Upon pressing another button, the curve is rotated about 
+  an axis (located on the left side of the screen) and creates a 3D solid of rotation. The solid of rotation is 
+  then displayed on the screen, and the user can view it and rotate it. 
+  
+	Adding the points may have been the easiest part of our design, since a lot of this code was already implemented 
+  in the Interactive CAD Lab where we drew shapes. Creating splines was more complicated, however. Splines use a 
+  matrix that is multiplied by the points a user clicks to generate a number of coefficients for x and y coordinates. 
+  These coefficients are then used in a cubic polynomial function (named a ”u function”) that outputs x and y 
+  coordinates that trace a curved fit between four points. We take these points and draw them using a GL_LINE_STRIP, 
+  with approximately sixty points for every four original points. To guarantee that the curve is smooth for when 
+  there are more than four points, for every additional point that is added, we repeat the matrix and u-function 
+  processes using the last set of four points. For example, to draw a spline that contains five points, we would 
+  evaluate points 0-3 and then 1-4, but only add the evaluated section from 3-4 to our spline after the second 
+  evaluation.
+  
+	Once we have a smooth spline curve we use the points of the curve to generate our 3D-shape. Our 3D shape is drawn 
+  as a cylinder, but of variable radius. For every pair of points, y0 and y1, we use their radii to determine the 
+  position of the slices to be drawn, and thus what the radii of the new disk should be. These disks form our 3D 
+  shape. One challenge of this part was calculating the right number of disks that had to be drawn. We also had to 
+  change the normals on each disk so that light reflected accurately off our shape. 
+  
+	Our program utilizes two shader programs, one for two dimensions and the other for three. The points and spline 
+  curve are displayed using the two dimensional model, while the 3D solid is displayed with the three dimensional 
+  one. The 3D shader allows the user to interact more with the screen by using a camera matrix to zoom and rotate.  
+  The model matrix for both shaders gives us a coordinate system that works across shaders.
+
+User Guide:
+
+  When the program boots, the user can draw points by clicking on locations in the drawing box. Points can be drawn 
+  from top to bottom or vice-versa. AT LEAST 4 POINTS MUST BE DRAWN. The user should keep in mind that the axis of 
+  rotation for the shape is the LEFT EDGE of the drawing box. Thus, the further a point is drawn from the left edge, 
+  the wider the rotated 3D shape will be at that point. Once points are drawn, press “Spline” to draw a Spline curve. 
+  Then press “Spin It!” to rotate the spline curve and create a 3D shape. 
+  
+  To rotate and view the 3D shape in multiple modes, click inside the drawing box. Use the I (in) and O (out) keys 
+  for zoom and X, Y, and Z keys to rotate about each respective axis. P will switch polygon modes (solid, wireframe, 
+  point), V will switch shaders so that you can view your spline again, and C will toggle the cull face mode (if 
+  enabled, will only show faces of the solid that are pointing towards the user).
+  
+  Press “Reset” to start over and draw brand new spline and 3D curves.
+  NOTE: You should see the shape displayed with a clay texture, if the Symlink works.
