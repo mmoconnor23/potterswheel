@@ -5,7 +5,7 @@ This is the final project from CS40: Graphics. I completed it with a partner (Gi
 
 Overview of Our Program:
 
-  The idea behind our program is to create a virtual potter's wheel. The user plots four or more points.  After 
+  	The idea behind our program is to create a virtual potter's wheel. The user plots four or more points.  After 
   pressing a button, these points are connected by a spline curve, a computational technique that guarantees a 
   smooth, curved line segment that connects the points. Upon pressing another button, the curve is rotated about 
   an axis (located on the left side of the screen) and creates a 3D solid of rotation. The solid of rotation is 
