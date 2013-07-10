@@ -1,8 +1,13 @@
 README
 ---------
 
-This is the final project from CS40: Graphics. I completed it with a partner (GitHub user: afarias1).
-
+This is the final project from CS40: Graphics. I completed it with a partner (GitHub user: afarias1). The following
+files contain the bulk of the code we wrote ourselves:
+	mypanelopengl.cpp
+	mypanelopengl.h
+	spline.cpp
+	spline.h
+	
 Here is a link to the online course syllabus: http://web.cs.swarthmore.edu/~adanner/cs40/s13/index.php
 
 Overview of Our Program:
